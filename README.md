@@ -119,6 +119,12 @@ gCent is set-up to use a right-hand rule referene frame for defining strike dire
   
   It's important to clear your workspace each time you change _run_na_params_ run NA_EQ_inverter; otherwise, it won't recognize the changes you made.
   
+  5. *Hacking into scripts and functions:*
+  
+  Many of the utilities and sub-utilities of gCent should be fairly easy to follow if you know Matlab programming. There are many aspects of the core functionality that you can run independently or in parts to tune to your needs. 
+  
+  At the same time, this software is an amalgamation of many utilities, many of which were edited or updated on the fly to solve a particular earthquake problem. So the codes are not "clean" and there are aspects of the codes that no longer have any functionality. Don't be suprised if you find lines of code that go no where...
+  
   ## 6. References and Citing
   ### 6.1 References from ReadMe
   
