@@ -1,7 +1,7 @@
 # gCent
 The gCent (geodetic Centroid) package is an open-source package for downsampling and inverting InSAR observations rapidly for the finite source mechanism of an earthquake. gCent is Matlab scripts and functions that will take a processed interferogram from ISCE (https://github.com/isce-framework/isce2), downsample the interferogram, and then invert the downsampled observations for the location, geometry, dimensions, and slip magnitude of a single fault plane embedded in an elastic halfspace. 
 
-This package is a modified and updated amalgamation of several packages that have been developed and published in multiple papers. Specifically, this package uses the variable data downsampling approach of Lohman & Simons (2004) that is available as the InSamp package (https://github.com/williamBarnhart/InSamp) to downsample data. The inversions are conducted using the Neighbourhood Algorithm (Sambridge 1997), as described in multiple publications (add refs...). 
+This package is a modified and updated amalgamation of several packages that have been developed and published in multiple papers. Specifically, this package uses the variable data downsampling approach of Lohman & Simons (2005) that is available as the InSamp package (https://github.com/williamBarnhart/InSamp) to downsample data. The inversions are conducted using the Neighbourhood Algorithm (Sambridge 1999), as described in multiple publications (Barnhart, 2017; Barnhart et al., 2019, 2015, 2013, and others). 
 
 This is research code that is provided to you "as is" with no warranties of correctness. Use at your own risk.
 
@@ -119,4 +119,26 @@ gCent is set-up to use a right-hand rule referene frame for defining strike dire
   
   It's important to clear your workspace each time you change _run_na_params_ run NA_EQ_inverter; otherwise, it won't recognize the changes you made.
   
+  ## 6. References and Citing
+  ### 6.1 References from ReadMe
+  
+Barnhart, W.D., 2017. Fault creep rates of the Chaman fault (Afghanistan and Pakistan) inferred from InSAR. J. Geophys. Res. Solid Earth 122, 2016JB013656. https://doi.org/10.1002/2016JB013656
 
+Barnhart, W.D., Hayes, G.P., Wald, D.J., 2019. Global Earthquake Response with Imaging Geodesy: Recent Examples from the USGS NEIC. Remote Sens. 11, 1357. https://doi.org/10.3390/rs11111357
+
+Barnhart, W.D., Lohman, R.B., Mellors, R.J., 2013. Active accommodation of plate convergence in Southern Iran: Earthquake locations, triggered aseismic slip, and regional strain rates. J. Geophys. Res. Solid Earth 118, 5699–5711. https://doi.org/10.1002/jgrb.50380
+
+Barnhart, W.D., Murray, J.R., Yun, S.-H., Svarc, J.L., Samsonov, S.V., Fielding, E.J., Brooks, B.A., Milillo, P., 2015. Geodetic Constraints on the 2014 M 6.0 South Napa Earthquake. Seismol. Res. Lett. 86, 335–343. https://doi.org/10.1785/0220140210
+
+Lohman, R.B., Simons, M., 2005. Some thoughts on the use of InSAR data to constrain models of surface deformation: Noise structure and data downsampling. Geochem. Geophys. Geosystems 6, n/a–n/a. https://doi.org/10.1029/2004GC000841
+
+Sambridge, M., 1999. Geophysical inversion with a neighbourhood algorithm—I. Searching a parameter space. Geophys. J. Int. 138, 479–494. https://doi.org/10.1046/j.1365-246X.1999.00876.x
+
+### 6.2 Referencing algorithms
+For referencing InSamp and the InSAR downsampling routines:
+
+Lohman, R.B., Simons, M., 2005. Some thoughts on the use of InSAR data to constrain models of surface deformation: Noise structure and data downsampling. Geochem. Geophys. Geosystems 6, n/a–n/a. https://doi.org/10.1029/2004GC000841
+
+For referecing the general Neighbourhood Algorithm:
+
+Sambridge, M., 1999. Geophysical inversion with a neighbourhood algorithm—I. Searching a parameter space. Geophys. J. Int. 138, 479–494. https://doi.org/10.1046/j.1365-246X.1999.00876.x
