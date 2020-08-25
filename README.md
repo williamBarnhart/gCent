@@ -10,8 +10,7 @@ This is research code that is provided to you "as is" with no warranties of corr
   - MATLAB Optimization Toolbox
   - MATLAB Mapping Toolbox
   - gCent (this package)
-  - A processed interferogram in ISCE format
-  - An unwrapped, geocoded interferogram, appropriate look files, a coherence map for masking, and a DEM clipped to the interferogram area (dem.crop in the merged directory of Sentinel interferograms. Only used if you wish to mask water).
+  - A processed interferogram in ISCE format: unwrapped, geocoded interferogram, appropriate look files, a coherence map for masking, and a DEM clipped to the interferogram area (dem.crop in the merged directory of Sentinel interferograms. Only used if you wish to mask water).
 
 ## 2. Installation
   - Download the gCent package and place it in a directory where you save Matlab function/scripts
@@ -90,4 +89,32 @@ To just do the inversion and plotting (steps 5-6 in the section 3.1), execute th
 `runGCent('inversion','/path/to/your/gCentfile/gCent_in.m')`
 
 This can be useful if you want to test alternate start models, different focal planes, or if you're adding a pre-existing resampled interferogram
+
+## 4. Conventions
+### 4.1 Interferogram conventions
+gCent works with co-seismic interferograms. It expects that the interferograms are processed with the older (pre-seismic) date as the reference date, and the youger (post-seismic) date as the secondary date. In this reference frame, negative LOS motion indicates motion toward the satellite (LOS decrease, typical of uplift), and positive LOS motion indicates motion away from the satellite (LOS increase, typical of subsidence). 
+### 4.2 Inversion conventions
+gCent is set-up to use a right-hand rule referene frame for defining strike direction and dip. Rake values are based on the same conventions of the W-phase moment tensor reported by the USGS. 
+
+## 5. Hints, Tricks, and Code Hacks
+  1. *Variance vs. Covariance Matrics:* 
+  
+  gCent's default is to estimate a variance matrix for the resampled data, simply because it's fast to do so. However, a full covariance matrix will likely lead to better inversions, but it takes longer to accomplish. To force gCent to estimate a full covariance matrix when resampling data, open _writeResampIn.m_ and change the very last line _frpintf(fid,'getcov     = 1\n');_ to _frpintf(fid,'getcov     = 2\n');_
+  
+  2. *Water Masking:* 
+  
+  Water masking can be very useful in regions where you have unwrapped phase over water (as happens when using SNAPHU). To set the water masking threshold, change the _waterElev_ variable in _gCent_in.m_ to a value chosen from the dem.crop file. Use mdx.py to click around and choose a value.
+  
+  3. *Your own start fault:* 
+  
+  gCent creates a start fault when doing the resampling using values you provide it the _gCent_in.m_ file and earthquake scaling relationships. Before doing this, it looks for WORKDIR/RESAMP/fault.mat. If fault.mat exists, it skips this step. In some cases, the starting location and geometry for a fault may be inappropriate due to mislocation or rupture propagation characteristics (the latter becomes more important with larger earthquakes). gCent includes a tool _faultMaker.m_ that will allow you to manually create your own single or multi-segment fault file. Execute _faultMaker_ on the command line, and this will launch a GUI that will allow you to create your own fault plane from an interferogram.
+  
+  4. *Changing inversion parameters manually:* 
+  
+  You may find that inversions aren't fitting the data well, or that the inversion prefers model values that the Neighbourhood Algorithm isn't searching (i.e. strike is too constrained). There are two ways to changes these values. First, you can adjust the start location and geometry in the _gCent_in.m_ file to test alternate start models. Second, you can navigate to the inversion directory (WORKDIR/NA). If you've already run the inversion step, there will be a file _run_na_params.m_ that has the different ranges for model values that are tested in the inversion. You can manually change these, then re-run the inversion by executing the following on the command line:
+  
+  `clear all; NA_EQ_inverter`
+  
+  It's important to clear your workspace each time you change _run_na_params_ run NA_EQ_inverter; otherwise, it won't recognize the changes you made.
+  
 
