@@ -20,7 +20,7 @@ This is research code that is provided to you "as is" with no warranties of corr
       addpath(genpath(/path/to/matlabfiles/gCent/v0.2))
     
 ## 3. Running gCent
-  - gCent can be run in three different modes: do everything, just resmple, or just invert. 
+  - gCent can be run in three different modes: do everything, just resample, or just invert. 
   - Before undertaking these steps, though, you will need to edit the gCent_in.m file located in your gCent/v0.2 directory:
 ### 3.0 Edit the gCent_in.m file
 1. You can either edit gCent_in.m in the gCent/v0.2 directory, or you can copy it to a working directory of your choice.
@@ -73,4 +73,21 @@ If you decide to run all steps in gCent, the following steps will occur in the d
 5. Invert the resampled interferograms for the best fitting geometry (strike, dip), dimensions (length, width), location (depth, longitude, latitude), and slip characteristics (rake, slip magnitude) of a single fault patch.
 6. Generate a series of figures and saved information in WORKDIR/NA
 
+To run everything, execute the following on the Matlab command line:
+
+`runGCent('all','/path/to/your/gCentfile/gCent_in.m')`
+
+### 3.2 Just resample
+To just do the data resampling (steps 1-4 in the section 3.1), execute the following:
+
+`runGCent('resample','/path/to/your/gCentfile/gCent_in.m')`
+
+This can be useful if you're just prepping interferograms, or if you want to resample based on a new starting fault model.
+
+### 3.3 Just invert
+To just do the inversion and plotting (steps 5-6 in the section 3.1), execute the following:
+
+`runGCent('inversion','/path/to/your/gCentfile/gCent_in.m')`
+
+This can be useful if you want to test alternate start models, different focal planes, or if you're adding a pre-existing resampled interferogram
 
