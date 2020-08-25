@@ -25,7 +25,8 @@ This is research code that is provided to you "as is" with no warranties of corr
 1. You can either edit gCent_in.m in the gCent/v0.2 directory, or you can copy it to a working directory of your choice.
 2. gCent_in.m has the following structure:
 
-<```% gCent_in.m
+```
+% gCent_in.m
 % Input script for driving gCent
 
 %Event parameters
@@ -57,7 +58,8 @@ WORKDIR             = ['/Users/wbarnhart/Work_local/EQmonitoring/' eventID];
 %Elevation of water in dem.crop file. Used to crop out water areas. To skip
 %water masking, set waterElev = [];
 corThresh           = 0.6;
-waterElev           = [-30]; %Leave this empty if there's no water to mask```>
+waterElev           = [-30]; %Leave this empty if there's no water to mask
+```
 
 The eventID, eventLoc, eventSDR and eventMag are used to estimate a starting fault that is used for downsampling data, and then they are used to select appropriate ranges for the starting location, strike, dip, and rake, and dimensions (length and width) of the fault plane for the inversions. The insarDaraFiles, opticalDataFiles, and gpsDataFiles are directory paths to where data files are located. The example here is for inverting a single Sentinel-1 TOPS Mode interferogram (note, it only points to the location where the files are stored, not their filenames). You can add multiple interferograms by adding another file into the brackets and bookended by apostrophes.
 
