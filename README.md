@@ -10,8 +10,8 @@ This is research code that is provided to you "as is" with no warranties of corr
   - MATLAB Optimization Toolbox
   - MATLAB Mapping Toolbox
   - gCent (this package)
-  - A processed interferogram in either ISCE or GMTSAR format
-  - An unwrapped, geocoded interferogram, appropriate look files, a coherence map for masking, and a DEM clipped to the interferogram area (if you wish to mask water).
+  - A processed interferogram in ISCE format
+  - An unwrapped, geocoded interferogram, appropriate look files, a coherence map for masking, and a DEM clipped to the interferogram area (dem.crop in the merged directory of Sentinel interferograms. Only used if you wish to mask water).
 
 ## 2. Installation
   - Download the gCent package and place it in a directory where you save Matlab function/scripts
@@ -26,7 +26,7 @@ This is research code that is provided to you "as is" with no warranties of corr
 1. You can either edit gCent_in.m in the gCent/v0.2 directory, or you can copy it to a working directory of your choice.
 2. gCent_in.m has the following structure:
 
-```% gCent_in.m
+<```% gCent_in.m
 % Input script for driving gCent
 
 %Event parameters
@@ -58,4 +58,19 @@ WORKDIR             = ['/Users/wbarnhart/Work_local/EQmonitoring/' eventID];
 %Elevation of water in dem.crop file. Used to crop out water areas. To skip
 %water masking, set waterElev = [];
 corThresh           = 0.6;
-waterElev           = [-30]; %Leave this empty if there's no water to mask```
+waterElev           = [-30]; %Leave this empty if there's no water to mask```>
+
+The eventID, eventLoc, eventSDR and eventMag are used to estimate a starting fault that is used for downsampling data, and then they are used to select appropriate ranges for the starting location, strike, dip, and rake, and dimensions (length and width) of the fault plane for the inversions. The insarDaraFiles, opticalDataFiles, and gpsDataFiles are directory paths to where data files are located. The example here is for inverting a single Sentinel-1 TOPS Mode interferogram (note, it only points to the location where the files are stored, not their filenames). You can add multiple interferograms by adding another file into the brackets and bookended by apostrophes.
+
+Edit all of these values as necessary for your particular event. I typically define location and geometry based on the USGS W-Phase solution, but you an use whatever you like.
+
+### 3.1 Running everything
+If you decide to run all steps in gCent, the following steps will occur in the directory WORKDIR defined in your gCent_in.m file:
+1. Check if resampled interferograms and a start fault exist
+2. Create a starting fault (fault.mat' in the directory WORKDIR/RESAMP) that is used as the spatial reference for resampling. This is done using earthquake scaling relationships and the input parameters of gCent_in.m
+3. Downsample each of the interferograms for which no resampled interferogram exists in WORKDIR/RESAMP. If a resampled interferogram already exists for a given interferogram, gCent will skip that scene (so delete scenes that you want to re-resampe).
+4. Estimate the variance structure of the resampled interferogram (see the Hints section below on how to change this to the full covariance matrix).
+5. Invert the resampled interferograms for the best fitting geometry (strike, dip), dimensions (length, width), location (depth, longitude, latitude), and slip characteristics (rake, slip magnitude) of a single fault patch.
+6. Generate a series of figures and saved information in WORKDIR/NA
+
+
