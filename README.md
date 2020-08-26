@@ -92,6 +92,16 @@ To just do the inversion and plotting (steps 5-6 in the section 3.1), execute th
 
 This can be useful if you want to test alternate start models, different focal planes, or if you're adding a pre-existing resampled interferogram
 
+### 3.4 Example Tutorial
+I have provided a set of processed interferograms and an example _gCent_in.m_ file that can be used as a test and tutorial. Download the file package from: https://drive.google.com/file/d/1PDbklumZJIqntwnP65i0cbMxr8GsZwCK/view?usp=sharing
+
+Place the zip file somewhere you like and unpack it. Then in Matlab, navigate to the directory and do the following:
+
+`addpath(genpath(/path/to/matlabfiles/gCent/v0.2)) % just to ensure that everything is in your path, skip otherwise
+runGCent('all',['./gCent_in.m']);`
+
+This will run through all the downsampling and inversions. Depending on your process, allow for ~1 hour of time to go through all the steps (there are 3 interferograms that will be downsampled).
+
 ## 4. Conventions
 ### 4.1 Interferogram conventions
 gCent works with co-seismic interferograms. It expects that the interferograms are processed with the older (pre-seismic) date as the reference date, and the youger (post-seismic) date as the secondary date. In this reference frame, negative LOS motion indicates motion toward the satellite (LOS decrease, typical of uplift), and positive LOS motion indicates motion away from the satellite (LOS increase, typical of subsidence). 
