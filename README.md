@@ -158,3 +158,7 @@ Lohman, R.B., Simons, M., 2005. Some thoughts on the use of InSAR data to constr
 For referecing the general Neighbourhood Algorithm:
 
 Sambridge, M., 1999. Geophysical inversion with a neighbourhood algorithm—I. Searching a parameter space. Geophys. J. Int. 138, 479–494. https://doi.org/10.1046/j.1365-246X.1999.00876.x
+
+For referecing the entire workflow, use the two references above AND this one:
+
+Barnhart, W.D., Hayes, G.P., Wald, D.J., 2019. Global Earthquake Response with Imaging Geodesy: Recent Examples from the USGS NEIC. Remote Sens. 11, 1357. https://doi.org/10.3390/rs11111357
