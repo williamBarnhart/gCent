@@ -100,7 +100,7 @@ Place the zip file somewhere you like and unpack it. Then in Matlab, navigate to
 `addpath(genpath(/path/to/matlabfiles/gCent/v0.2)) % just to ensure that everything is in your path, skip otherwise
 runGCent('all',['./gCent_in.m']);`
 
-This will run through all the downsampling and inversions. Depending on your process, allow for ~1 hour of time to go through all the steps (there are 3 interferograms that will be downsampled).
+This will run through all the downsampling and inversions. Depending on your processor and other things going on on your computer, allow for ~1-2 hours of time to go through all the steps (there are 3 interferograms that will be downsampled).
 
 ## 4. Conventions
 ### 4.1 Interferogram conventions
