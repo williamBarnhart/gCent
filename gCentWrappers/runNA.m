@@ -19,6 +19,6 @@ saveDir = [NADIR '/run_' num2str(pid)];
 mkdir([NADIR '/run_' num2str(pid)])
 plotNAresults
 save([NADIR '/run_' num2str(pid) '/NAinversion.mat'],'out','synth','slip','Mw','datafiles');
-savegCentOutputs(out, slip, Mw, zone, saveDir);
+savegCentOutputs(out, slip, Mw, zone, saveDir, eventID, eventID2);
 
 cd(STARTDIR);

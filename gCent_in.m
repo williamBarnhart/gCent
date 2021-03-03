@@ -3,6 +3,7 @@
 
 %Event parameters
 eventID             = 'Nevada_20200515';
+eventID2            = 'nn00725272'
 eventLoc            = [-117.875 38.159 0];       %Lon, lat, depth
 eventSDR            = [73 78 -24];                %Event Strike, dip, rake
 eventMag            = 7;                           %Event magnitude
@@ -20,7 +21,6 @@ eventDate           = [2020 05 15];             % Event date, year, month, day
 % GPS data: give full path to a .mat file
 
 insarDataFiles      = {'/Users/wbarnhart/Work_local/EQmonitoring/Nevada_20200515/p144/200510-200516/merged','/Users/wbarnhart/Work_local/EQmonitoring/Nevada_20200515/p64/200511-200517/merged'};
-%insarDataFiles       ={'/Users/wbarnhart/Work_local/EQmonitoring/Iran_20180825/p6/180822-180828/merged'};
 opticalDataFilesEW  = {};
 opticalDataFilesNS  = {};
 gpsTimeSeriesDir    = {};
